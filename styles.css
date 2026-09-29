@@ -1,0 +1,43 @@
+body {
+    text-align: center;
+    background: #00ff00;
+    color: #073f07;
+}
+
+.status-panel {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem;
+}
+
+.space {
+    
+}
+
+.board {
+    background :#0b6b0b;
+    padding: 1rem;
+    border-radius: 1rem;
+    color:#043504;
+}
+
+.game-header {
+    background: green;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin: 0 10rem;
+    color :#073f07;
+}
+
+.dice-panel,
+.player-card {
+    background:#109f10;
+    border-radius: 1rem;
+    padding: 1rem;
+    color:#095809;
+}
+
+.player-image {
+    width: 4rem;
+}

@@ -66,8 +66,8 @@ body {
     background: rgb(255, 255, 255);
     width: 4rem;
     height: 4rem;
-    border-radius: 0.5rem;
-    border: 0.2rem solid rgb(188, 188, 188);
+    border-radius: 0.6rem;
+    border: 0.2rem solid rgb(212, 212, 212);
     display: grid;
     place-items: center;
     font-size: 3rem;
@@ -78,4 +78,8 @@ body {
 
 .player-image {
     width: 4rem;
+}
+
+.token {
+    
 }

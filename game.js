@@ -75,7 +75,7 @@ function CreateBoard() {
     }
 }
 
-function RollDice() {
+async function RollDice() {
     var diceResult = Math.floor(Math.random() * 6 + 1);
 
     diceBoxElement.textContent = diceResult;
@@ -84,9 +84,15 @@ function RollDice() {
 
     UpdateTokens();
 
-    //var currentCateogry = CATEGORIES[gameState.player.position % CATEGORIES.length];
+    var currentCategory = CATEGORIES[gameState.player.position % CATEGORIES.length];
 
-    //ShowQuestion(questionData);
+    try {
+        var questionData = await getQuestion(currentCategory.id);
+        ShowQuestion(questionData);
+    }
+    catch (error) {
+        playerQuestionText.innerHTML = error;
+    }
 }
 
 function UpdateTokens() {
@@ -111,24 +117,24 @@ async function getQuestion(targetCategory) {
         },
         body: JSON.stringify({
             "category": targetCategory,
-            "difficulty": "keskitaso",
+            "difficulty": "helppo",
             "ageGroup": "13-15",
             "count": 1,
             "language": "suomi"
         })
     });
 
-    if (response.ok == false) {
-        throw new Error("Äy");
+    if (!response.ok) {
+        throw new Error("Sori mut toi nettisivu ei sit toimi");
     }
 
     var data = await response.json();
     console.log(data)
-    console.log(data[0].question)
+    console.log(data.questions[0].question)
 
-    return data[0]
+    return data.questions[0]
 }
 
-function ShowGuestion(guestionData) {
+function ShowQuestion(questionData) {
     playerQuestionText.innerHTML = questionData.question;
 }
